@@ -1,6 +1,8 @@
 ---
-title: typescriptの映射类型
+title: Typescriptの映射类型
 date: 2020-02-24 11:42:19
+abstract: 介绍了映射类型以及标准库中一些使用映射类型实现的工具函数
+header_image: /posts/Frame 1.png
 comments: true #是否可评论
 toc: true #是否显示文章目录
 categories:  #分类
@@ -9,17 +11,15 @@ tags:   #标签
     - typescript类型
 ---
 
-映射类型：属于ts高级类型，映射类型提供从旧类型中创建新类型的方式。在映射类型中，新类型用相同的方式转换旧类型的每个属性。
+**映射类型**：属于ts高级类型，映射类型提供从旧类型中创建新类型的方式。在映射类型中，新类型用相同的方式转换旧类型的每个属性。
 
-条件类型：和映射类型类似，也是在一个类型基础上，执行某些条件操作，形成的新类型。
-
-已经被记录在标准库的一些常用的工具函数Record，Partial，Pick，Readonly，还有通过infer（后面介绍）实现的ReturnType都是映射类型。
+已经被记录在标准库的一些常用的工具函数**Record**，**Partial**，**Pick**，**Readonly**都是映射类型。
 
 下面通过实现这些函数来进一步理解：
 
 ### Record
 ```
-//实现 
+// 实现 
 type Record<[T extends keyof any]，K> = { 
     [P in T ]: K 
 } 
@@ -34,7 +34,7 @@ type Countries = Record<Names, country>
 
 ### Partial
 ```
-//实现 
+// 实现 
 type Partial<T> = { 
     [K in keyof T ]?: T[K] 
 } 
@@ -53,7 +53,7 @@ type selectedColors = Partial<Colors>
 
 ### Pick
 ```
-//实现 
+// 实现 
 type Pick<T，K extends keyof T> = { 
     [P in K]: T[P] 
 } 
@@ -71,7 +71,7 @@ type selectedColor = Pick<Colors, 'yellow'>
 
 ### Readonly
 ```
-//实现 
+// 实现 
 type Readonly<T> = { 
     readonly [K in keyof T ]: T[K] 
 } 
@@ -87,14 +87,17 @@ type selectedColors = Readonly<Colors>
  
 // expect: selectedColors = { readonly yellow: string; readonly red: string; readonly black: string }
 ```
+<br/>
 
-### “Infer” 指代extends语句中待推断的类型变量，可以看下面的例子
+**条件类型**：和映射类型类似，也是在一个类型基础上，执行某些条件操作，形成的新类型。2.8里增加了一些预定义的条件类型，比如常用的**ReturnType**(通过**infer**实现)，其他条件类型可以去官方文档查看。
+
 ```
-//这段表示如果T可以赋值给(params: P) => any,则ParamsType=P 否则ParamsType=T 
+// “Infer” 指代extends语句中待推断的类型变量
+// 这段表示如果T可以赋值给(params: P) => any,则ParamsType=P 否则ParamsType=T 
  
 type ParamsType<T> = T extends (params: infer P) => any ? P : T 
  
-//测试用例 
+// 测试用例 
  
 type user = { 
     name: string 
@@ -109,7 +112,7 @@ type test = ParamsType<Func>
 
 ### ReturnType
 ```
-//实现 
+// 实现 
 type ReturnType<T> = T extends (...args: any[]) => infer P ? P : any 
  
 // 测试用例 
