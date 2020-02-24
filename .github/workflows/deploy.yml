@@ -12,12 +12,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-      with:
-        submodules: true # Checkout private submodules(themes or something else)
     - name: Checkout submodules
-      uses: srt32/git-actions@v0.0.3
-      with:
-        args: git submodule update --init --recursive
+      run:
+        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+        git submodule sync --recursive
+        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+    
     
     # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.)
     - name: Cache node modules
