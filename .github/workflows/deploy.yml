@@ -17,4 +17,4 @@ jobs:
         BASE_BRANCH: gh-pages
         BRANCH: master
         FOLDER: public
-        BUILD_SCRIPT: npm i -g hexo && npm install && hexo generate
+        BUILD_SCRIPT: npm i -g hexo && npm install && hexo clean && hexo deploy
