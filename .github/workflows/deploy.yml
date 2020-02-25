@@ -16,5 +16,6 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: gh-pages
         BRANCH: master
+        TARGET_FOLDER: public
         FOLDER: public
         BUILD_SCRIPT: npm i -g hexo && npm install && hexo clean && hexo deploy
