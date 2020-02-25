@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy Demo
+name: Action for deploy blog
 on:
   push:
     branches:
