@@ -107,7 +107,7 @@ jsonContent:
   meta: true
   pages: false
   posts:
-    title: false
+    title: true
     date: true
     path: true
     text: false
