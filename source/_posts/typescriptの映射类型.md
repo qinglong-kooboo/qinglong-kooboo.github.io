@@ -2,7 +2,7 @@
 title: 'Typescriptの映射类型'
 date: 2020-02-24 11:42:19
 abstract: 介绍了映射类型以及标准库中一些使用映射类型实现的工具函数
-header_image: /posts/Frame 1.png
+header_image: /posts/1.png
 screenshot_image: /posts/1_screenshot.png
 comments: true #是否可评论
 toc: true #是否显示文章目录

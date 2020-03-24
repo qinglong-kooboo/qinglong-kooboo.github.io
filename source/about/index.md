@@ -6,8 +6,8 @@ date: 2020-02-24 10:08:51
 
 # Site
 * 这个博客主要是记录一些总结和想法，也会记录一些生活上的东西。
-* 博客模板-[hexo archer](https://github.com/fi3ework/hexo-theme-archer)。按照自己的喜好，改动了一些样式，增加了一些功能。
-* 本来是想自己设计UI，从头搭一个的，无意中发现这个模板，心动+懒癌发作 :)
+* 博客模板[hexo archer](https://github.com/fi3ework/hexo-theme-archer)。本来是想自己设计UI，从头搭一个的，无意中发现这个模板，心动+懒癌 :)
+* 按照我自己的喜好，改动了一些样式，增加了一些功能。（ 用模板引擎渲染果然还是不太爽。
 
 # Tags
 * web狗
